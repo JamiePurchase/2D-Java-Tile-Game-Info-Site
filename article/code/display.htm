@@ -1,0 +1,62 @@
+I use the display class to build the main window.
+<br><br>
+
+<div class="code">
+	package dev.tilegame.display;<br>
+	import dev.tilegame.Keyboard;<br>
+	<br>
+	import java.awt.Canvas;<br>
+	import java.awt.Dimension;<br>
+	import javax.swing.JFrame;<br>
+	import javax.swing.JPanel;<br>
+	<br>
+	public class Display<br>
+	{<br>
+	&nbsp;&nbsp;&nbsp;&nbsp;private JFrame frame;<br>
+	&nbsp;&nbsp;&nbsp;&nbsp;private Canvas canvas;<br>
+	&nbsp;&nbsp;&nbsp;&nbsp;private String title;<br>
+	&nbsp;&nbsp;&nbsp;&nbsp;private int width, height;<br>
+	<br>
+	&nbsp;&nbsp;&nbsp;&nbsp;public Display(String title, int width, int height)<br>
+	&nbsp;&nbsp;&nbsp;&nbsp;{<br>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this.title = title;<br>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this.width = width;<br>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this.height = height;<br>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;createDisplay();<br>
+	&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+	<br>
+	&nbsp;&nbsp;&nbsp;&nbsp;private void createDisplay()<br>
+	&nbsp;&nbsp;&nbsp;&nbsp;{<br>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// Create the frame<br>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;frame = new JFrame(title);<br>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;frame.setSize(width, height);<br>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);<br>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;frame.setUndecorated(true);<br>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;frame.setExtendedState(JFrame.MAXIMIZED_BOTH);<br>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;frame.setResizable(false);<br>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;frame.setLocationRelativeTo(null);<br>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;frame.setVisible(true);<br>
+	<br>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// Create a JPanel<br>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;JPanel panel = new JPanel();<br>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;panel.addKeyListener(new Keyboard());<br>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;frame.add(panel);<br>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;panel.requestFocusInWindow();<br>
+	<br>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// Create the canvas<br>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;canvas = new Canvas();<br>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;canvas.setPreferredSize(new Dimension(width, height));<br>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;canvas.setMaximumSize(new Dimension(width, height));<br>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;canvas.setMinimumSize(new Dimension(width, height));<br>
+	<br>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// Add the canvas to the frame<br>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;frame.add(canvas);<br>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;frame.pack();<br>
+	&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+	<br>
+	&nbsp;&nbsp;&nbsp;&nbsp;public Canvas getCanvas()<br>
+	&nbsp;&nbsp;&nbsp;&nbsp;{<br>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return canvas;<br>
+	&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+	}
+</div>

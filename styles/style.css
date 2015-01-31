@@ -1,0 +1,80 @@
+body
+{
+	background-color: #000000;
+	color: #28460F;
+	font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+}
+
+.code
+{
+	color: #000000;
+	font-family: "Courier New", Courier, monospace;
+	background-color: #FFFFFF;
+    border: 2px solid #28460F;
+    border-radius: 5px;
+    padding-top: 10px;
+    padding-right: 15px;
+    padding-bottom: 15px;
+    padding-left: 15px;
+}
+
+.content
+{
+	background-color: #87964B;
+    border: 2px solid #28460F;
+    border-radius: 10px;
+	box-shadow: 5px 5px 5px #28460F;
+}
+
+.info
+{
+	background-color: #AFBE82;
+    border: 2px solid #28460F;
+    border-radius: 5px;
+    padding-top: 10px;
+    padding-right: 15px;
+    padding-bottom: 15px;
+    padding-left: 15px;
+}
+
+.link
+{
+	font-style: italic;
+}
+
+.link:hover
+{
+	color: #A4C042;
+	text-decoration: underline;
+	cursor: pointer;
+}
+
+.linkInfo
+{
+	font-style: italic;
+}
+
+.linkInfo:hover
+{
+	text-decoration: underline;
+	cursor: pointer;
+}
+
+.linkNavigation
+{
+	font-size: 120%;
+}
+
+.linkNavigation:hover
+{
+	color: #A4C042;
+	cursor: pointer;
+}
+
+.navigation
+{
+	background-color: #87964B;
+    border: 2px solid #28460F;
+    border-radius: 10px;
+	box-shadow: 5px 5px 5px #28460F;
+}

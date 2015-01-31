@@ -1,0 +1,140 @@
+<html>
+	<head>
+		<title>Autumn Park</title>
+		<link rel="stylesheet" type="text/css" href="styles/style.css">
+		<script>
+			function article(title,article)
+			{
+				document.getElementById("title").innerHTML = title;
+				loadFile("content",article);
+			}
+			
+			function init()
+			{
+				article("Home", "site/home");
+				loadFile("navigation","site/navigation");
+			}
+			
+			function loadFile(element,file)
+			{
+				var client = new XMLHttpRequest();
+				var file = file + ".htm";
+				client.open('GET', file);
+				client.onreadystatechange = function()
+				{
+					document.getElementById(element).innerHTML = client.responseText;
+				}
+				client.send();
+			}
+
+			function search(search)
+			{
+				document.searchArrayCount = 0;
+				document.searchArrayTitle = [];
+				document.searchArrayFile = [];
+				
+				// Match
+				if(search.indexOf("people")>=0){searchMatch("People","article/people");}
+
+				// Render
+				if(document.searchArrayCount>0){searchCompile();}
+				else{document.getElementById("searchResults").innerHTML = "&nbsp;-&nbsp;no articles found";}
+			}
+			
+			function searchCompile()
+			{
+				var result = "";
+				for(var x=1;x<=document.searchArrayCount;x+=1)
+				{
+					result = result + "&nbsp;-&nbsp;<a class='linkInfo' onClick='article(";
+					result = result + '"' + document.searchArrayTitle[1] + '","' + document.searchArrayFile[1] + '"';
+					result = result + ")'>" + document.searchArrayTitle[1] + "</a>";
+					if(x<document.searchArrayCount){result = result + "<br>";}
+				}
+				document.getElementById("searchResults").innerHTML = result;
+			}
+			
+			function searchMatch(title,file)
+			{
+				document.searchArrayCount+=1;
+				document.searchArrayTitle[document.searchArrayCount] = title;
+				document.searchArrayFile[document.searchArrayCount] = file;
+			}
+		</script>
+	</head>
+	<body onLoad="init()">
+		<table width="100%">
+			<tr height="5" valign="top">
+				<td width="50" rowspan="4"></td>
+				<td width="*"></td>
+				<td width="50" rowspan="4"></td>
+			</tr>
+			<tr valign="top">
+				<td align="center">
+					<!-- Header -->
+					<img src="images/title.png">
+					<br><br>
+					<table width="100%">
+						<tr height="5" valign="top">
+							<td width="*" rowspan="3"></td>
+							<td width="80%" align="center">
+								<!-- Navigation -->
+								<div class="navigation">
+									<table width="100%">
+										<tr height="5"><td></td></tr>
+										<tr valign="top">
+											<td align="center">
+												<div id="navigation"></div>
+											</td>
+										</tr>
+										<tr height="5"><td></td></tr>
+									</table>
+								</div>
+							</td>
+							<td width="*" rowspan="3"></td>
+						</tr>
+					</table>
+					<br><br>
+				</td>
+			</tr>
+			<tr valign="top">
+				<td align="center">
+					<div class="content">
+						<table width="100%">
+							<tr height="10">
+								<td width="20" rowspan="3"></td>
+								<td width="*"></td>
+								<td width="20" rowspan="3"></td>
+							</tr>
+							<tr valign="top">
+								<td>
+									<!-- Title -->
+									<h2><span id="title">Welcome</span></h2>
+									<!-- Content -->
+									<div id="content"></div>
+									<br>
+									<!-- Footer -->
+									<table width="100%">
+										<tr valign="top">
+											<td width="100"></td>
+											<td width="*" align="center">
+												Autumn Park Info
+											</td>
+											<td width="100"></td>
+										</tr>
+									</table>
+								</td>
+							</tr>
+							<tr height="10">
+								<td></td>
+							</tr>
+						</table>
+					</div>
+				</td>
+			</tr>
+			<tr height="20">
+				<td></td>
+			</tr>
+		</table>
+	</body>
+</html>
